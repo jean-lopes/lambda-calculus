@@ -1,0 +1,9 @@
+variable = ? any lower case letter ?;
+
+lambda = '\' | 'λ';
+
+expression = variable
+           | expression, expression
+           | lambda, variable, '.', expression
+           | '(', expression, ')'
+           ;

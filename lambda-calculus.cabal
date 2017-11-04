@@ -1,0 +1,25 @@
+name:                lambda-calculus
+version:             0.1.0.0
+homepage:            https://github.com/jean-lopes/lambda-calculus#readme
+license:             MIT
+license-file:        LICENSE
+author:              Jean Carlo Giambastiani Lopes
+maintainer:          <first-name>dot<last-name>at<hotmail>dot<com>dot<br>
+copyright:           Copyright (c) 2017 Jean Carlo Giambastiani Lopes
+category:            undefined
+build-type:          Simple
+cabal-version:       >=1.10
+extra-source-files:  README.md
+
+executable lambda-calculus
+  hs-source-dirs:      src
+  main-is:             Main.hs
+  other-modules:       LambdaCalculus
+                     , LambdaCalculus.AST
+                     , LambdaCalculus.Parser
+  default-language:    Haskell2010
+  build-depends:       base >= 4.7 && < 5
+                     , containers
+                     , megaparsec
+                     , simple-repl
+  ghc-options:         -Wall

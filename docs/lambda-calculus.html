@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>lambda-calculus</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            background-color: #f4f2ef
+        }
+
+        h1 {
+            font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+            font-size: 4em
+        }
+
+        h3 {
+            font-family: "Lucida Console", Monaco, monospace;
+            font-size: 1em
+        }
+
+        body {
+            align-content: center;
+        }
+
+        svg.railroad-diagram {
+            background-color: #f4f2ef
+        }
+
+        svg.railroad-diagram path {
+            stroke-width: 3;
+            stroke: #000;
+            fill: transparent
+        }
+
+        svg.railroad-diagram text {
+            font: 700 14px "Lucida Console", Monaco, monospace;
+            text-anchor: middle
+        }
+
+        svg.railroad-diagram text.label {
+            text-anchor: start
+        }
+
+        svg.railroad-diagram text.comment {
+            font: italic 12px "Lucida Console", Monaco, monospace;
+        }
+
+        svg.railroad-diagram rect {
+            stroke-width: 3;
+            stroke: #000;
+            fill: #ccfecc
+        }
+    </style>
+</head>
+<body>
+    <script>(function (t) { function i(t, i) { t.prototype = Object.create(i.prototype), t.prototype.$super = i.prototype } function h() { return [].slice.call(arguments).reduce(function (t, i) { return void 0 !== t ? t : i }) } function e(t, i) { var h = t - i; switch (a.INTERNAL_ALIGNMENT) { case "left": return [0, h]; case "right": return [h, 0]; case "center": default: return [h / 2, h / 2] } } function s(t) { return "string" == typeof t ? new A(t) : t } function n(t, i, h) { i = i || {}, h = h || ""; var e = document.createElementNS("http://www.w3.org/2000/svg", t); for (var s in i) e.setAttribute(s, i[s]); return e.textContent = h, e } function r(t, i, e) { return this instanceof r ? (this.children = e || [], this.tagName = t, this.attrs = h(i, {}), this) : new r(t, i, e) } function o(t, i) { if (!(this instanceof o)) return new o(t, i); r.call(this, "path"), this.attrs.d = "M" + t + " " + i } function a(t) { if (!(this instanceof a)) return new a([].slice.call(arguments)); r.call(this, "svg", { class: a.DIAGRAM_CLASS }), this.items = t.map(s), this.items.unshift(new f), this.items.push(new m), this.width = this.items.reduce(function (t, i) { return t + i.width + (i.needsSpace ? 20 : 0) }, 0) + 1, this.up = Math.max.apply(null, this.items.map(function (t) { return t.up })), this.down = Math.max.apply(null, this.items.map(function (t) { return t.down })), this.formatted = !1 } function d(t) { if (!(this instanceof d)) return new d([].slice.call(arguments)); r.call(this, "g"), this.items = t.map(s), this.width = this.items.reduce(function (t, i) { return t + i.width + (i.needsSpace ? 20 : 0) }, 0), this.up = this.items.reduce(function (t, i) { return Math.max(t, i.up) }, 0), this.down = this.items.reduce(function (t, i) { return Math.max(t, i.down) }, 0) } function p(t, i) { if (!(this instanceof p)) return new p(t, [].slice.call(arguments, 1)); if (r.call(this, "g"), "number" != typeof t || t !== Math.floor(t)) throw new TypeError("The first argument of Choice() must be an integer."); if (t < 0 || t >= i.length) throw new RangeError("The first argument of Choice() must be an index for one of the items."); this.normal = t, this.items = i.map(s), this.width = this.items.reduce(function (t, i) { return Math.max(t, i.width) }, 0) + 4 * a.ARC_RADIUS, this.up = this.down = 0; for (var h = 0; h < this.items.length; h++) { var e = this.items[h]; h < t && (this.up += Math.max(a.ARC_RADIUS, e.up + e.down + a.VERTICAL_SEPARATION)), h == t && (this.up += Math.max(a.ARC_RADIUS, e.up), this.down += Math.max(a.ARC_RADIUS, e.down)), h > t && (this.down += Math.max(a.ARC_RADIUS, a.VERTICAL_SEPARATION + e.up + e.down)) } } function u(t, i) { if (void 0 === i) return p(1, l(), t); if ("skip" === i) return p(0, l(), t); throw "Unknown value for Optional()'s 'skip' argument." } function c(t, i) { if (!(this instanceof c)) return new c(t, i); r.call(this, "g"), i = i || new l, this.item = s(t), this.rep = s(i), this.width = Math.max(this.item.width, this.rep.width) + 2 * a.ARC_RADIUS, this.up = this.item.up, this.down = Math.max(2 * a.ARC_RADIUS, this.item.down + a.VERTICAL_SEPARATION + this.rep.up + this.rep.down) } function f(t) { if (!(this instanceof f)) return new f; r.call(this, "path"), this.width = 20, this.up = 10, this.down = 10, this.simpleType = t } function m(t) { if (!(this instanceof m)) return new m; r.call(this, "path"), this.width = 20, this.up = 10, this.down = 10, this.simpleType = t } function A(t) { if (!(this instanceof A)) return new A(t); r.call(this, "g"), this.text = t, this.width = 8 * t.length + 20, this.up = 11, this.down = 11 } function w(t) { if (!(this instanceof w)) return new w(t); r.call(this, "g"), this.text = t, this.width = 8 * t.length + 20, this.up = 11, this.down = 11 } function R(t) { if (!(this instanceof R)) return new R(t); r.call(this, "g"), this.text = t, this.width = 7 * t.length + 10, this.up = 11, this.down = 11 } function l() { if (!(this instanceof l)) return new l; r.call(this, "g"), this.width = 0, this.up = 0, this.down = 0 } r.prototype.format = function (t, i, h) { }, r.prototype.addTo = function (t) { if (t instanceof r) return t.children.push(this), this; var i = this.toSVG(); return t.appendChild(i), i }, r.prototype.escapeString = function (t) { return t.replace(/[*_\`\[\]<&]/g, function (t) { return "&#" + t.charCodeAt(0) + ";" }) }, r.prototype.toSVG = function () { var t = n(this.tagName, this.attrs); return "string" == typeof this.children ? t.innerHTML = r.prototype.escapeString(this.children) : this.children.forEach(function (i) { t.appendChild(i.toSVG()) }), t }, r.prototype.toString = function () { var t = "<" + this.tagName, i = "g" == this.tagName || "svg" == this.tagName; for (var h in this.attrs) t += " " + h + '="' + (this.attrs[h] + "").replace(/&/g, "&amp;").replace(/"/g, "&quot;") + '"'; return t += ">", i && (t += "\n"), "string" == typeof this.children ? t += r.prototype.escapeString(this.children) : this.children.forEach(function (i) { t += i }), t += "</" + this.tagName + ">\n" }, i(o, r), o.prototype.m = function (t, i) { return this.attrs.d += "m" + t + " " + i, this }, o.prototype.h = function (t) { return this.attrs.d += "h" + t, this }, o.prototype.right = o.prototype.h, o.prototype.left = function (t) { return this.h(-t) }, o.prototype.v = function (t) { return this.attrs.d += "v" + t, this }, o.prototype.down = o.prototype.v, o.prototype.up = function (t) { return this.v(-t) }, o.prototype.arc = function (t) { var i = a.ARC_RADIUS, h = a.ARC_RADIUS; if ("e" != t[0] && "w" != t[1] || (i *= -1), "s" != t[0] && "n" != t[1] || (h *= -1), "ne" == t || "es" == t || "sw" == t || "wn" == t) e = 1; else var e = 0; return this.attrs.d += "a" + a.ARC_RADIUS + " " + a.ARC_RADIUS + " 0 0 " + e + " " + i + " " + h, this }, o.prototype.format = function () { return this.attrs.d += "h.5", this }, i(a, r); for (var S in t) a[S] = t[S]; a.prototype.format = function (t, i, e, s) { i = h(i, t = h(t, 20), 20), e = h(e, t, 20); var n = s = h(s, i, 20), d = t; d += this.up; for (var p = r("g", a.STROKE_ODD_PIXEL_LENGTH ? { transform: "translate(.5 .5)" } : {}), u = 0; u < this.items.length; u++) { var c = this.items[u]; c.needsSpace && (o(n, d).h(10).addTo(p), n += 10), c.format(n, d, c.width).addTo(p), n += c.width, c.needsSpace && (o(n, d).h(10).addTo(p), n += 10) } return this.attrs.width = this.width + s + i, this.attrs.height = this.up + this.down + t + e, this.attrs.viewBox = "0 0 " + this.attrs.width + " " + this.attrs.height, p.addTo(this), this.formatted = !0, this }, a.prototype.addTo = function (t) { var i = document.getElementsByTagName("script"), h = (i = i[i.length - 1]).parentNode; return t = t || h, this.$super.addTo.call(this, t) }, a.prototype.toSVG = function () { return this.formatted || this.format(), this.$super.toSVG.call(this) }, a.prototype.toString = function () { return this.formatted || this.format(), this.$super.toString.call(this) }, i(d, r), d.prototype.format = function (t, i, h) { var s = e(h, this.width); o(t, i).h(s[0]).addTo(this), o(t + s[0] + this.width, i).h(s[1]).addTo(this), t += s[0]; for (var n = 0; n < this.items.length; n++) { var r = this.items[n]; r.needsSpace && (o(t, i).h(10).addTo(this), t += 10), r.format(t, i, r.width).addTo(this), t += r.width, r.needsSpace && (o(t, i).h(10).addTo(this), t += 10) } return this }, i(p, r), p.prototype.format = function (t, i, h) { var s = e(h, this.width); o(t, i).h(s[0]).addTo(this), o(t + s[0] + this.width, i).h(s[1]).addTo(this), t += s[0]; for (var n = this.items.length - 1, r = this.width - 4 * a.ARC_RADIUS, d = this.normal - 1; d >= 0; d--) { p = this.items[d]; if (d == this.normal - 1) u = Math.max(2 * a.ARC_RADIUS, this.items[d + 1].up + a.VERTICAL_SEPARATION + p.down); o(t, i).arc("se").up(u - 2 * a.ARC_RADIUS).arc("wn").addTo(this), p.format(t + 2 * a.ARC_RADIUS, i - u, r).addTo(this), o(t + 2 * a.ARC_RADIUS + r, i - u).arc("ne").down(u - 2 * a.ARC_RADIUS).arc("ws").addTo(this), u += Math.max(a.ARC_RADIUS, p.up + a.VERTICAL_SEPARATION + (0 == d ? 0 : this.items[d - 1].down)) } o(t, i).right(2 * a.ARC_RADIUS).addTo(this), this.items[this.normal].format(t + 2 * a.ARC_RADIUS, i, r).addTo(this), o(t + 2 * a.ARC_RADIUS + r, i).right(2 * a.ARC_RADIUS).addTo(this); for (d = this.normal + 1; d <= n; d++) { var p = this.items[d]; if (d == this.normal + 1) var u = Math.max(2 * a.ARC_RADIUS, this.items[d - 1].down + a.VERTICAL_SEPARATION + p.up); o(t, i).arc("ne").down(u - 2 * a.ARC_RADIUS).arc("ws").addTo(this), p.format(t + 2 * a.ARC_RADIUS, i + u, r).addTo(this), o(t + 2 * a.ARC_RADIUS + r, i + u).arc("se").up(u - 2 * a.ARC_RADIUS).arc("wn").addTo(this), u += Math.max(a.ARC_RADIUS, p.down + a.VERTICAL_SEPARATION + (d == n ? 0 : this.items[d + 1].up)) } return this }, i(c, r), c.prototype.needsSpace = !0, c.prototype.format = function (t, i, h) { var s = e(h, this.width); o(t, i).h(s[0]).addTo(this), o(t + s[0] + this.width, i).h(s[1]).addTo(this), o(t += s[0], i).right(a.ARC_RADIUS).addTo(this), this.item.format(t + a.ARC_RADIUS, i, this.width - 2 * a.ARC_RADIUS).addTo(this), o(t + this.width - a.ARC_RADIUS, i).right(a.ARC_RADIUS).addTo(this); var n = Math.max(2 * a.ARC_RADIUS, this.item.down + a.VERTICAL_SEPARATION + this.rep.up); return o(t + a.ARC_RADIUS, i).arc("nw").down(n - 2 * a.ARC_RADIUS).arc("ws").addTo(this), this.rep.format(t + a.ARC_RADIUS, i + n, this.width - 2 * a.ARC_RADIUS).addTo(this), o(t + this.width - a.ARC_RADIUS, i + n).arc("se").up(n - 2 * a.ARC_RADIUS).arc("en").addTo(this), this }, i(f, r), f.prototype.format = function (t, i) { return !1 === this.simpleType ? this.attrs.d = "M " + t + " " + (i - 10) + " v 20 m 0 -10 h 20.5" : this.attrs.d = "M " + t + " " + (i - 10) + " v 20 m 10 -20 v 20 m -10 -10 h 20.5", this }, i(m, r), m.prototype.format = function (t, i) { return !1 === this.simpleType ? this.attrs.d = "M " + t + " " + i + " h 20 m 0 -10 v 20" : this.attrs.d = "M " + t + " " + i + " h 20 m -10 -10 v 20 m 10 -20 v 20", this }, i(A, r), A.prototype.needsSpace = !0, A.prototype.format = function (t, i, h) { var s = e(h, this.width); return o(t, i).h(s[0]).addTo(this), o(t + s[0] + this.width, i).h(s[1]).addTo(this), t += s[0], r("rect", { x: t, y: i - 11, width: this.width, height: this.up + this.down, rx: 10, ry: 10 }).addTo(this), r("text", { x: t + this.width / 2, y: i + 4 }, this.text).addTo(this), this }, i(w, r), w.prototype.needsSpace = !0, w.prototype.format = function (t, i, h) { var s = e(h, this.width); return o(t, i).h(s[0]).addTo(this), o(t + s[0] + this.width, i).h(s[1]).addTo(this), t += s[0], r("rect", { x: t, y: i - 11, width: this.width, height: this.up + this.down }).addTo(this), r("text", { x: t + this.width / 2, y: i + 4 }, this.text).addTo(this), this }, i(R, r), R.prototype.needsSpace = !0, R.prototype.format = function (t, i, h) { var s = e(h, this.width); return o(t, i).h(s[0]).addTo(this), o(t + s[0] + this.width, i).h(s[1]).addTo(this), t += s[0], r("text", { x: t + this.width / 2, y: i + 5, class: "comment" }, this.text).addTo(this), this }, i(l, r), l.prototype.format = function (t, i, h) { return o(t, i).right(h).addTo(this), this }; var T; "function" == typeof define && define.amd ? (T = {}, define([], function () { return T })) : T = "object" == typeof exports ? exports : this; var I = [a, function () { var t = new a([].slice.call(arguments)), i = t.items; return i.shift(), i.pop(), i.unshift(new f(!1)), i.push(new m(!1)), t.items = i, t }, d, p, u, c, function (t, i, h) { return u(c(t, i), h) }, A, w, R, l];["Diagram", "ComplexDiagram", "Sequence", "Choice", "Optional", "OneOrMore", "ZeroOrMore", "Terminal", "NonTerminal", "Comment", "Skip"].forEach(function (t, i) { T[t] = I[i] }) }).call(this, { VERTICAL_SEPARATION: 8, ARC_RADIUS: 10, DIAGRAM_CLASS: "railroad-diagram", STROKE_ODD_PIXEL_LENGTH: !0, INTERNAL_ALIGNMENT: "center" });</script>
+    <h1>λ-calculus</h1>    
+    <h3>expression</h3>
+    <div>
+        <script>Diagram(Choice(0, Sequence(NonTerminal('variable')), Sequence(NonTerminal('expression'), NonTerminal('expression')), Sequence(NonTerminal('lambda'), NonTerminal('variable'), '.', NonTerminal('expression')), Sequence('(', NonTerminal('expression'), ')'), Sequence(NonTerminal('identifier'), NonTerminal('expression')))).addTo()</script>
+    </div>
+    <h3>lambda</h3>
+    <div>
+        <script>Diagram(Choice(0, Sequence('\\'), Sequence('λ'))).addTo()</script>
+    </div>
+    <h3>variable</h3>
+    <div>
+        <script>Diagram(Choice(0, Sequence(NonTerminal('lower-case-letter')))).addTo()</script>
+    </div>
+    <h3>identifier</h3>
+    <div>
+        <script>Diagram(Choice(0, Sequence(NonTerminal('letter'), ZeroOrMore(Choice(0, Sequence(NonTerminal('alphanumeric')), Sequence('_')))))).addTo()</script>
+    </div>
+    <h3>alphanumeric</h3>
+    <div>
+        <script>Diagram(Choice(0, Sequence(NonTerminal('letter')), Sequence(NonTerminal('digit')))).addTo()</script>
+    </div>
+    <h3>letter</h3>
+    <div>
+        <script>Diagram(Choice(0, Sequence(NonTerminal('lower-case-letter')), Sequence(NonTerminal('upper-case-letter')))).addTo()</script>
+    </div>
+    <h3>digit</h3>
+    <div>
+        <script>Diagram(Choice(0, Sequence('0'), Sequence('1'), Sequence('2'), Sequence('3'), Sequence('4'), Sequence('5'), Sequence('6'), Sequence('7'), Sequence('8'), Sequence('9'))).addTo()</script>
+    </div>
+    <h3>lower-case-letter</h3>
+    <div>
+        <script>Diagram(Choice(0, Sequence('a'), Sequence('b'), Sequence('c'), Sequence('d'), Sequence('e'), Sequence('f'), Sequence('g'), Sequence('h'), Sequence('i'), Sequence('j'), Sequence('k'), Sequence('l'), Sequence('m'), Sequence('n'), Sequence('o'), Sequence('p'), Sequence('q'), Sequence('r'), Sequence('s'), Sequence('t'), Sequence('u'), Sequence('v'), Sequence('w'), Sequence('x'), Sequence('y'), Sequence('z'))).addTo()</script>
+    </div>
+    <h3>upper-case-letter</h3>
+    <div>
+        <script>Diagram(Choice(0, Sequence('A'), Sequence('B'), Sequence('C'), Sequence('D'), Sequence('E'), Sequence('F'), Sequence('G'), Sequence('H'), Sequence('I'), Sequence('J'), Sequence('K'), Sequence('L'), Sequence('M'), Sequence('N'), Sequence('O'), Sequence('P'), Sequence('Q'), Sequence('R'), Sequence('S'), Sequence('T'), Sequence('U'), Sequence('V'), Sequence('W'), Sequence('X'), Sequence('Y'), Sequence('Z'))).addTo()</script>
+    </div>
+</body>
+
+</html>

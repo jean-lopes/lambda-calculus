@@ -1,9 +1,34 @@
-variable = ? any lower case letter ?;
-
-lambda = '\' | 'λ';
-
 expression = variable
            | expression, expression
            | lambda, variable, '.', expression
            | '(', expression, ')'
+           | identifier, expression
            ;
+
+lambda = '\' | 'λ';
+
+variable = lower-case-letter;
+
+identifier = letter, { alphanumeric | '_' };
+
+alphanumeric = letter | digit;
+
+letter = lower-case-letter | upper-case-letter;
+
+digit = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' ;
+
+lower-case-letter = 'a' | 'b' | 'c' | 'd' 
+                  | 'e' | 'f' | 'g' | 'h' 
+                  | 'i' | 'j' | 'k' | 'l' 
+                  | 'm' | 'n' | 'o' | 'p' 
+                  | 'q' | 'r' | 's' | 't' 
+                  | 'u' | 'v' | 'w' | 'x' 
+                  | 'y' | 'z' ;
+
+upper-case-letter = 'A' | 'B' | 'C' | 'D' 
+                  | 'E' | 'F' | 'G' | 'H' 
+                  | 'I' | 'J' | 'K' | 'L' 
+                  | 'M' | 'N' | 'O' | 'P' 
+                  | 'Q' | 'R' | 'S' | 'T' 
+                  | 'U' | 'V' | 'W' | 'X' 
+                  | 'Y' | 'Z' ;
